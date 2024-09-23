@@ -83,7 +83,6 @@ cc_library(
     linkopts = [
         "-ldl",
         "-lpthread",
-        "-lrt",
     ],
     deps = [
         "//third_party/spanner_pg/shims:catalog_shim_header",

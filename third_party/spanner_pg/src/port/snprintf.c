@@ -354,7 +354,6 @@ static void trailing_pad(int padlen, PrintfTarget *target);
  * Note: glibc declares this as returning "char *", but that would require
  * casting away const internally, so we don't follow that detail.
  */
-#ifndef HAVE_STRCHRNUL
 
 static inline const char *
 strchrnul(const char *s, int c)
@@ -363,20 +362,6 @@ strchrnul(const char *s, int c)
 		s++;
 	return s;
 }
-
-#else
-
-/*
- * glibc's <string.h> declares strchrnul only if _GNU_SOURCE is defined.
- * While we typically use that on glibc platforms, configure will set
- * HAVE_STRCHRNUL whether it's used or not.  Fill in the missing declaration
- * so that this file will compile cleanly with or without _GNU_SOURCE.
- */
-#ifndef _GNU_SOURCE
-extern char *strchrnul(const char *s, int c);
-#endif
-
-#endif							/* HAVE_STRCHRNUL */
 
 
 /*

@@ -498,8 +498,12 @@ pg_flush_data(int fd, off_t offset, off_t nbytes)
 		 * reliably when available (contrast to msync()) and doesn't flush out
 		 * clean data (like FADV_DONTNEED).
 		 */
-		rc = sync_file_range(fd, offset, nbytes,
-							 SYNC_FILE_RANGE_WRITE);
+		#ifdef __linux__
+			rc = sync_file_range(fd, offset, nbytes, SYNC_FILE_RANGE_WRITE);
+		#else
+			// Fallback for non-Linux systems (including macOS)
+			rc = fsync(fd);
+		#endif
 		if (rc != 0)
 		{
 			int			elevel;

@@ -19,6 +19,10 @@
 #include <unicode/ucol.h>
 #endif
 
+#ifdef __APPLE__
+#include <xlocale.h>
+#endif
+
 #include "utils/guc.h"
 
 #ifdef USE_ICU

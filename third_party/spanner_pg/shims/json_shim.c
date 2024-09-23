@@ -33,6 +33,7 @@
 // built-in JSON support. There's no way to configure it out, so we get out
 // the hammer.
 #include <stdlib.h>
+#include <sys/types.h>
 
 void * parsejsonpath(const char *str, int len) {
 	return NULL;

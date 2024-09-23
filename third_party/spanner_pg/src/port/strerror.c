@@ -84,17 +84,6 @@ pg_strerror_r(int errnum, char *buf, size_t buflen)
 static char *
 gnuish_strerror_r(int errnum, char *buf, size_t buflen)
 {
-#ifdef HAVE_STRERROR_R
-#ifdef STRERROR_R_INT
-	/* POSIX API */
-	if (strerror_r(errnum, buf, buflen) == 0)
-		return buf;
-	return NULL;				/* let caller deal with failure */
-#else
-	/* GNU API */
-	return strerror_r(errnum, buf, buflen);
-#endif
-#else							/* !HAVE_STRERROR_R */
 	char	   *sbuf = strerror(errnum);
 
 	if (sbuf == NULL)			/* can this still happen anywhere? */
@@ -102,7 +91,6 @@ gnuish_strerror_r(int errnum, char *buf, size_t buflen)
 	/* To minimize thread-unsafety hazard, copy into caller's buffer */
 	strlcpy(buf, sbuf, buflen);
 	return buf;
-#endif
 }
 
 /*

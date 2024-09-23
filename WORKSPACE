@@ -240,9 +240,9 @@ http_archive(
 
 http_archive(
     name = "com_googlesource_code_riegeli",
-    sha256 = "603c4d35224cf00f1d4a68c45cc4c5ca598613886886f93e1cffbe49a18aa6ea",
-    strip_prefix = "riegeli-3966874f4ce0b05bb32ae184f1fb44411992e12d",
-    url = "https://github.com/google/riegeli/archive/3966874f4ce0b05bb32ae184f1fb44411992e12d.tar.gz",
+    sha256 = "080d55a22e1c67e0c1f6c01350c079b1d72d48bb9899f8fc2a201e2f5708d6cd",
+    strip_prefix = "riegeli-40881d48655d44a3e3362aaf3ed25f4b81d3145f",
+    url = "https://github.com/joshheinrichs-shopify/riegeli/archive/40881d48655d44a3e3362aaf3ed25f4b81d3145f.tar.gz",
 )
 
 http_archive(

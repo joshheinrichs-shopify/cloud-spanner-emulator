@@ -27,6 +27,10 @@
 #include <sys/ucred.h>
 #endif
 
+#ifdef __APPLE__
+#include <sys/ucred.h>
+#endif
+
 
 /*
  * BSD-style getpeereid() for platforms that lack it.

@@ -40,6 +40,11 @@ typedef SOCKET pgsocket;
 typedef unsigned int socklen_t;
 #endif
 
+#ifdef __APPLE__
+#define HAVE_DECL_STRLCAT 1
+#define HAVE_DECL_STRLCPY 1
+#endif
+
 /* non-blocking */
 extern bool pg_set_noblock(pgsocket sock);
 extern bool pg_set_block(pgsocket sock);
